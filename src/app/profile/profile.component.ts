@@ -3,6 +3,7 @@ import {ArticleService} from "../article/article.service";
 import {Article} from "../article/Article";
 import {Router} from "@angular/router";
 import {UserService} from "../user/user.service";
+import {logMessages} from "@angular-devkit/build-angular/src/builders/browser-esbuild/esbuild";
 
 
 
@@ -27,6 +28,7 @@ export class ProfileComponent implements OnInit{
       // @ts-ignore
       localStorage.removeItem("hashedPassword")
     }
+    await this.articleService.getCategories().forEach(value => value.forEach(category => console.log(category)));
   }
 
   constructor(

@@ -34,6 +34,9 @@ export class ArticleService {
       console.log(e);
       return e;
     }
+  }
 
+  getCategories() {
+    return this.http.get<string[]>(AppComponent.baseUri+"/categories");
   }
 }

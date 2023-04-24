@@ -3,7 +3,7 @@ import {ArticleService} from "../article/article.service";
 import {Article} from "../article/Article";
 import {Router} from "@angular/router";
 import {UserService} from "../user/user.service";
-import {logMessages} from "@angular-devkit/build-angular/src/builders/browser-esbuild/esbuild";
+import {MatSelect, MatSelectChange} from "@angular/material/select";
 
 
 
@@ -12,27 +12,27 @@ import {logMessages} from "@angular-devkit/build-angular/src/builders/browser-es
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements OnInit{
-  public articles : Array<Article> = new Array<Article>();
+export class ProfileComponent implements OnInit {
+  public articles: Array<Article> = new Array<Article>();
+  public categories: Array<string> = new Array<string>();
   @ViewChild('table') table: HTMLTableElement | undefined;
 
   async ngOnInit() {
-    if(localStorage.getItem('isConnected') == 'false' || localStorage.getItem('isConnected') == null)
-    {
+    if (localStorage.getItem('isConnected') == 'false' || localStorage.getItem('isConnected') == null) {
       this.router.navigateByUrl('/login');
     }
     await this.articleService.getArticles().forEach(value => value.forEach(article => this.articles.push(article)));
+    await this.articleService.getCategories().forEach(value => value.forEach(category => this.categories.push(category)));
     if (localStorage.getItem('password') != undefined) {
-        this.hashPassword()
+      this.hashPassword()
     } else {
       // @ts-ignore
       localStorage.removeItem("hashedPassword")
     }
-    await this.articleService.getCategories().forEach(value => value.forEach(category => console.log(category)));
   }
 
   constructor(
-    private articleService: ArticleService,
+    public articleService: ArticleService,
     private router: Router,
     private userService: UserService
   ) {
@@ -41,8 +41,7 @@ export class ProfileComponent implements OnInit{
   protected readonly localStorage = localStorage;
 
   handleDelete($event: MouseEvent) {
-    if(window.confirm('Are you sure you want to delete your account?'))
-    {
+    if (window.confirm('Are you sure you want to delete your account?')) {
       console.log(localStorage.getItem("username"));
       // @ts-ignore
       this.userService.deleteUser(localStorage.getItem("username"));
@@ -57,22 +56,21 @@ export class ProfileComponent implements OnInit{
     }
   }
 
-  hashPassword() : void {
+  hashPassword(): void {
     let s = localStorage.getItem('password');
-    let h : number = 0;
-    if(s!=undefined)
-    {
-      for(let i = 0; i < s.length; i++)
+    let h: number = 0;
+    if (s != undefined) {
+      for (let i = 0; i < s.length; i++)
         h = Math.imul(31, h) + s.charCodeAt(i) | 0;
 
-      localStorage.setItem('hashedPassword',h.toString());
+      localStorage.setItem('hashedPassword', h.toString());
     }
   }
 
-  handleListClick(event:any) {
+  handleListClick(event: any) {
     let hiddenDiv = document.querySelectorAll('.article-information');
     hiddenDiv.forEach(value => {
-      if(!value.classList.contains("hidden"))value.classList.add('hidden')
+      if (!value.classList.contains("hidden")) value.classList.add('hidden')
     });
     event.target.firstChild.classList.remove('hidden');
   }
@@ -82,9 +80,16 @@ export class ProfileComponent implements OnInit{
   }
 
   @HostListener('window:resize', ['$event'])
-  onResize(event:any) {
-    var width:number = window.innerWidth;
+  onResize(event: any) {
+    var width: number = window.innerWidth;
     this.table ? this.table.width : width.toString();
+  }
+
+
+
+  handleSelectionChange($event: MatSelectChange) {
+    this.articles = Array<Article>();
+    this.articleService.getArticlesByCategory($event.value).forEach(value => value.forEach(article => this.articles.push(article)));
   }
 }
 

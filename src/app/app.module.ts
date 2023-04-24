@@ -14,6 +14,8 @@ import { LogoutComponent } from './logout/logout.component';
 import { ArticleComponent } from './article/article.component';
 import { AddArticleComponent } from './add-article/add-article.component';
 import { UserComponent } from './user/user.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { UserComponent } from './user/user.component';
     RouterLinkActive,
     RouterLink,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent],

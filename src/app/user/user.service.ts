@@ -32,8 +32,6 @@ export class UserService {
     const options = {
       params : new HttpParams().set('username', username)
     }
-    this.http.delete(AppComponent.baseUri+`/User/`, options).subscribe( data => {
-      console.log(data);
-    });
+    this.http.delete(AppComponent.baseUri+`/User/delete` ,options);
   }
 }

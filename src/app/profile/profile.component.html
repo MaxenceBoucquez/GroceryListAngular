@@ -34,11 +34,28 @@
 <div class="article-title-container">
   <h2 class="article-title">Here are the articles in the database</h2>
 </div>
+<div class="h3-wrapper">
+  <h3 class="category-title">Choose which article you want to see</h3>
+</div>
+
+<div class="select-wrapper">
+  <mat-form-field appearance="fill">
+    <mat-label>Category</mat-label>
+    <mat-select class="select" (selectionChange)="handleSelectionChange($event)">
+      <mat-option class="option">All categories</mat-option>
+      <mat-option class="option" *ngFor="let category of categories" [value]="category">
+        {{category}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+
+
 <div class="articles">
   <ul class="article">
-    <li *ngFor="let article of articles" (click)="handleListClick($event)">
+    <li *ngFor="let article of articles" (click)="handleListClick($event)" class="article-li">
       <app-article [article]="article"></app-article>
-
       <div class="article-information hidden">
         Unitary price is {{article.unitaryPrice}} €.
       </div>

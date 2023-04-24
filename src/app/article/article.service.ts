@@ -39,4 +39,12 @@ export class ArticleService {
   getCategories() {
     return this.http.get<string[]>(AppComponent.baseUri+"/Article/article-categories");
   }
+
+  getArticlesByCategory(category : string) {
+    if(category == undefined)
+    {
+      return this.http.get<Article[]>(AppComponent.baseUri+"/articles");
+    }
+    return this.http.get<Article[]>(AppComponent.baseUri+"/Article/category/"+category);
+  }
 }

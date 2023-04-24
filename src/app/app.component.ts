@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'exerciceazurefront';
+  title : string = 'exerciceazurefront';
+  static baseUri : string = 'https://grocerylistazureapi.azure-api.net';
 }

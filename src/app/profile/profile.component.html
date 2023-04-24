@@ -1,0 +1,62 @@
+<div class="connection-success" *ngIf="localStorage.getItem('isConnected')">
+  <div class="title">
+    <h1>Connection success</h1>
+  </div>
+  <p>Here are your information :</p>
+  <table #table>
+    <tr>
+      <td>Username</td>
+      <td>{{localStorage.getItem('username')==undefined?"unknown" : localStorage.getItem('username')}}</td>
+    </tr>
+    <tr>
+      <td>First name</td>
+      <td>{{localStorage.getItem('firstName')==undefined?"unknown" : localStorage.getItem('firstName')}}</td>
+    </tr>
+    <tr>
+      <td>Last name</td>
+      <td>{{localStorage.getItem('lastName')==undefined?"unknown" : localStorage.getItem('lastName')}}</td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td>{{localStorage.getItem('email')==undefined?"unknown" : localStorage.getItem('email')}}</td>
+    </tr>
+    <tr>
+      <td>Password</td>
+      <td>{{localStorage.getItem('password')==undefined?"unknown" : localStorage.getItem('password')}}</td>
+    </tr>
+    <tr>
+      <td>Hashed password</td>
+      <td>{{localStorage.getItem('hashedPassword')==undefined?"unknown" : localStorage.getItem('hashedPassword')}}</td>
+    </tr>
+  </table>
+</div>
+
+<div class="article-title-container">
+  <h2 class="article-title">Here are the articles in the database</h2>
+</div>
+<div class="articles">
+  <ul class="article">
+    <li *ngFor="let article of articles" (click)="handleListClick($event)">
+      <app-article [article]="article"></app-article>
+
+      <div class="article-information hidden">
+        Unitary price is {{article.unitaryPrice}} €.
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="connection-error" *ngIf="!localStorage.getItem('isConnected')">
+  <div class="title">
+    <h1>Connection error</h1>
+  </div>
+    <p> You are not connected</p>
+</div>
+
+<div class="add-article-button-wrapper">
+  <button class="add-article" (click)="handleAddArticle()"> Add article</button>
+</div>
+
+<div class="delete-button-wrapper">
+  <button class="delete" (click)="handleDelete($event)"> Delete account !</button>
+</div>

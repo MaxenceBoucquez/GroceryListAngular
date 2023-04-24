@@ -1,0 +1,44 @@
+h2
+{
+  font-size: clamp(2rem, 2vw, 2.5rem);
+  text-align: center;
+  padding: 1rem;
+  font-weight: 700;
+}
+
+.container
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.logout
+{
+  background-color: #00abec;
+  border-radius: 10px;
+  border: #00abec 2px solid;
+  transition: all 0.3s ease 0s;
+  color: white;
+  width: clamp(20rem, 2vw, 25rem);
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.logout:hover
+{
+  background-color: white;
+  color: #00abec;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .logout
+  {
+    width: 99%;
+  }
+}
+
+
+
+

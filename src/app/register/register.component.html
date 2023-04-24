@@ -1,0 +1,9 @@
+<form class="form-container" [formGroup]="checkoutForm" (ngSubmit)="handleSubmit()">
+  <input type="text" name="username" class="username" placeholder="username" (change)="handleUsernameChange($event)"/>
+  <input type="text" name="firstName" class="name" placeholder="first name" (change)="handleNameChange($event)"/>
+  <input type="text" name="lastName" class="surname" placeholder="last name" (change)="handleSurnameChange($event)"/>
+  <input type="text" name="mail" class="mail" placeholder="mail address" (change)="handleEmailChange($event)"/>
+  <input type="password" name="password" class="password" placeholder="password" minlength="8" (change)="handlePasswordChange($event)"/>
+  <input type="password" name="confirm-password" class="confirm-password" minlength="8" placeholder="confirm password" (change)="handleConfirmPasswordChange($event)"/>
+  <input type="submit" value="Validate" class="submit-button">
+</form>

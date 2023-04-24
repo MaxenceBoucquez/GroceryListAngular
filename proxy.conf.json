@@ -1,0 +1,12 @@
+{
+  "/api/*": {
+    "target": "http://localhost:7144",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "PathRewrite": {
+      "^/api": "",
+      "^/api/settings": "/api/app/settings"
+    }
+  }
+}

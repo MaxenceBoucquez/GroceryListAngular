@@ -1,0 +1,84 @@
+.form-container
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  width: clamp(50%, 25%, 25%);
+}
+
+.form
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+input
+{
+  margin: 1rem;
+  padding: 0.5rem;
+  border-radius: 10px;background-color: #00abec;
+  border : #00abec solid 3px;
+  height: clamp(1.5rem, 2vw, 2rem);
+  color: white;
+  font-weight: bolder;
+  transition: all 0.3s ease 0s;
+}
+
+input::placeholder
+{
+  color: white;
+  font-weight: bold;
+}
+
+.submit-button
+{
+  background-color: #00abec;
+  font-weight: bold;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  cursor: pointer;
+  height: clamp(2rem, 3vw, 5rem);
+  transition: all 0.3s ease 0s;
+  color: white;
+  border-radius: 10px;
+  border: #00abec solid 3px;
+  width: clamp(25%,50%,50%);
+  align-self: center;
+}
+
+input:focus, input:hover
+{
+  background-color: white;
+  color: #00abec;
+}
+
+input:focus::placeholder, input:hover::placeholder
+{
+  color: #00abec;
+}
+
+.submit-button:hover
+{
+  background-color: white;
+  color: #00abec;
+}
+
+@media (max-width: 768px)
+{
+  .form-container
+  {
+    width: 100%;
+  }
+
+  input
+  {
+    font-size: 1rem;
+  }
+}
+
+
+
+
+
+

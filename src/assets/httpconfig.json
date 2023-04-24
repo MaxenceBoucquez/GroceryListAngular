@@ -1,0 +1,5 @@
+{
+  "ArticlesUrl" : "localhost:7144/api/Articles",
+  "textfile" : "assets/textfile.txt",
+  "date" : "2017-03-01T00:00:00"
+}

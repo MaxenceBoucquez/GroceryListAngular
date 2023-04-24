@@ -1,0 +1,11 @@
+<div class="title-wrapper">
+  <h1>Add a new article</h1>
+</div>
+
+<form class="form-container" [formGroup]="checkoutForm" (ngSubmit)="handleSubmit()">
+  <input type="text" formControlName="name" placeholder="Article name" (change)="handleNameChange($event)"/>
+  <input type="text" formControlName="price" placeholder="Article price (unitary)" (change)="handlePriceChange($event)"/>
+  <input type="text" formControlName="category" placeholder="Article category" (change)="handleCategoryChange($event)"/>
+  <!-- <input type="number" formControlName="quantity" placeholder="Article quantity" (change)="handleQuantityChange($event)"/> -->
+  <input type="submit" value="Add" class="submit-button"/>
+</form>

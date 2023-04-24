@@ -1,0 +1,17 @@
+<div class="navbar">
+  <div class="home">
+    <a routerLink="/home">Home</a>
+  </div>
+  <div class="register" *ngIf="localStorage.getItem('isConnected')!='true'">
+    <a routerLink="/register">Register</a>
+  </div>
+  <div class="login" *ngIf="localStorage.getItem('isConnected')!='true'">
+    <a routerLink="/login">Login</a>
+  </div>
+  <div class="logout" *ngIf="localStorage.getItem('isConnected')=='true'" (click)="handleLogout($event)">
+    <a routerLink="/logout">Logout</a>
+  </div>
+  <div class="profile" *ngIf="localStorage.getItem('isConnected')=='true'">
+    <a routerLink="/profile">Profile</a>
+  </div>
+</div>

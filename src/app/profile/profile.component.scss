@@ -1,0 +1,260 @@
+.title
+{
+  display: flex;
+  justify-content: center;
+}
+
+.title > h1
+{
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  font-weight: bold;
+  background-color: #00abec;
+  color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+p
+{
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  font-weight: bold;
+  background-color: #00abec;
+  color: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin: 2rem;
+  text-align: center;
+  border: #00abec 3px solid;
+  transition: all 0.3s ease;
+}
+
+p:hover
+{
+  background-color: white;
+  color: #00abec;
+}
+
+table
+{
+  border-style: solid;
+  border-width: 3px;
+  border-color: #00abec;
+  border-radius: 1rem;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  max-width: 1111px;
+  flex-direction: column;
+  margin: 0 auto;
+
+}
+
+td
+{
+  padding: 1rem;
+  border-style: solid;
+  border-color: #00abec;
+  background-color: #00abec;
+  border-radius: 1rem;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+td:nth-child(even)
+{
+  width: 10rem;
+  flex-grow: 1;
+}
+
+td:nth-child(odd)
+{
+  width: 50rem;
+}
+
+td:hover
+{
+  background-color: white;
+  color: #00abec;
+}
+
+.delete-button-wrapper
+{
+  display: flex;
+  justify-content:flex-end;
+}
+
+.delete
+{
+  background-color: #00abec;
+  color: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin: 2rem;
+  text-align: center;
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  border: #00abec 3px solid;
+  transition: all 0.3s ease;
+}
+
+.delete:hover
+{
+  background-color: #ff0000;
+  color: white;
+  cursor: pointer;
+}
+
+.article-title-container
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+  background-color: #00abec;
+  border-radius: 1rem;
+  border: #00abec 3px solid;
+  transition: all 0.3s ease;
+}
+
+.article-title-container:hover
+{
+  background-color: white;
+  color: #00abec;
+  h2
+  {
+    color:#00abec;
+  }
+}
+
+
+.article-title
+{
+  color: white;
+}
+
+.articles
+{
+  display: flex;
+}
+
+ul
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+li
+{
+  list-style-type: none;
+  background-color: #00abec;
+  display: block;
+  position: relative;
+  color: white;
+  padding :2rem;
+  font-size: 2rem;
+  margin: 3rem;
+  border-radius: 1rem;
+  border: #00abec 3px solid;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+li:hover, li:focus
+{
+  background-color: white;
+  color: #00abec;
+  cursor: pointer;
+  font-size: 2.5rem;
+}
+
+li::after, li::before
+{
+  content: " ";
+  display: block;
+  position : absolute;
+  width: 0;
+  height: 0;
+  transition: all 0.3s;
+}
+
+li::after
+{
+  bottom: 1rem;
+  right: 1rem;
+  border-right: #00abec 2px solid;
+  border-bottom: #00abec 2px solid;
+}
+
+li::before
+{
+  top: 1rem;
+  left: 1rem;
+  border-left: #00abec 2px solid;
+  border-top: #00abec 2px solid;
+}
+
+li:hover::after, li:hover::before
+{
+  width: calc(100% - 2.15rem);
+  height: calc(100% - 2.15rem);
+  transition: all 0.3s;
+}
+
+.hidden
+{
+  font-size: 0;
+  transition: all 0.3s ease;
+}
+
+li:hover > .hidden, li:focus > .hidden
+{
+  display: block;
+  font-size: 1rem;
+}
+
+
+
+.add-article-button-wrapper
+{
+  display: flex;
+  justify-content: flex-start;
+  margin: 2rem;
+}
+
+.add-article
+{
+  background-color: #00abec;
+  color: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin: 2rem;
+  text-align: center;
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  border: #00abec 3px solid;
+  transition: all 0.3s ease;
+}
+
+.add-article:hover
+{
+  background-color: white;
+  color: #00abec;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .articles {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+
+  .add-article-button-wrapper, .delete-button-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+}

@@ -16,7 +16,7 @@ export class ArticleService {
   }
 
   getArticle(id : number){
-    return this.http.get<Article>(AppComponent.baseUri+"/article/"+id);
+    return this.http.get<Article>(AppComponent.baseUri+"/Article/"+id);
   }
 
   getArticles() {
@@ -25,7 +25,7 @@ export class ArticleService {
 
   addArticle(articleDto : ArticleDto) {
     try {
-      return this.http.post<ArticleDto>(AppComponent.baseUri + "/article/add", JSON.stringify(articleDto), this.httpOptions)
+      return this.http.post<ArticleDto>(AppComponent.baseUri + "/Article/add", JSON.stringify(articleDto), this.httpOptions)
         .subscribe(data => {
           console.log(data);
         });
@@ -37,6 +37,6 @@ export class ArticleService {
   }
 
   getCategories() {
-    return this.http.get<string[]>(AppComponent.baseUri+"/categories");
+    return this.http.get<string[]>(AppComponent.baseUri+"/Article/article-categories");
   }
 }

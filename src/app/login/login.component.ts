@@ -26,30 +26,27 @@ export class LoginComponent implements OnInit{
     if(localStorage.getItem("isConnected") == "true"){
       this.router.navigate(['/profile']);
     }
-    console.log(localStorage.getItem("savedName"));
   }
 
-  handleSubmit($event: SubmitEvent) : void {
+  async handleSubmit($event: SubmitEvent): Promise<void> {
     $event.preventDefault();
     this.username = this.profilForm.controls['username'].value;
-    if(this.username == "" || this.profilForm.controls['password'].value == ""){
+    if (this.username == "" || this.profilForm.controls['password'].value == "") {
       window.alert("Please fill all the fields");
       return;
     }
     try {
       this.userService.getUser(this.username)
-    }
-    catch (e)
-     {
-       window.alert("This username is not registered in the database. Do you want to register with it?")
-        if(window.confirm("This username is not registered in the database. Do you want to register with it?")){
-          this.router.navigate(['/register']);
-        }
-        return;
+    } catch (e) {
+      window.alert("This username is not registered in the database. Do you want to register with it?")
+      if (window.confirm("This username is not registered in the database. Do you want to register with it?")) {
+        this.router.navigate(['/register']);
       }
+      return;
+    }
     try {
       this.userService.getUser(this.username).subscribe(user => {
-        if(user.password != this.profilForm.controls['password'].value){
+        if (user.password != this.profilForm.controls['password'].value) {
           window.alert("Wrong password");
           return;
         } else {
@@ -59,12 +56,10 @@ export class LoginComponent implements OnInit{
           localStorage.setItem("email", user.email);
           localStorage.setItem("password", user.password);
           localStorage.setItem("isConnected", "true");
-          localStorage.setItem("isConnected", "true");
           this.router.navigate(['/profile']);
         }
       });
-    }
-    catch (e) {
+    } catch (e) {
       window.alert("Wrong username");
       return;
     }
